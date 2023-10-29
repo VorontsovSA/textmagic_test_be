@@ -28,3 +28,4 @@ git clone https://github.com/VorontsovSA/textmagic_test_be.git ./
 docker compose up -d --build 
 docker compose exec php sh boot.sh
 ```
+Открыть `http://127.0.0.1:8080/` в любимом браузере
