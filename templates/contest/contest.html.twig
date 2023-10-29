@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TextMagic contest{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-center">
+        <div class="col col-8">
+            <div class="row text-center">
+                <h1 class="display-5 fw-bold text-body-emphasis">TextMagic Contest</h1>
+            </div>
+            <div class="row align-items-start">
+                <div class="col col-12 p-1">
+                    <div class="bg-body-tertiary p-5 rounded">
+                        {{ form_start(form) }}
+                            <fieldset class="mb-3">
+                                <div class="row"><h4>{{ form_label(form.answer) }}</h4></div>
+                                {{ form_widget(form.answer) }}
+                            </fieldset>
+                            <div class="mb-3">
+                                {{ form_widget(form.Submit) }}
+                            </div>
+                        {{ form_end(form) }}
+                        <div class="row">
+                            <div class="col text-center">
+                                {{ current }} of {{ total }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TextMagic contest results{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-center">
+        <div class="col col-8">
+            <div class="row text-center">
+                <h1 class="display-5 fw-bold text-body-emphasis">TextMagic Results</h1>
+            </div>
+            <div class="row align-items-start">
+                <div class="col col-6 p-1">
+                    <div class="text-bg-success rounded p-2">
+                        <div class="row text-center">
+                            <h3 class="display-10">Correct answers</h3>
+                        </div>
+                        {% for question in success_questions %}
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5>{{ question.questionText }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    {% for option in question.options %}
+                                        {% set optionClass = option.selected ? 'fw-bold' : '' %}
+                                        <li class="list-group-item {{ optionClass }}">
+                                            {{ option.optionText }}{{ option.selected ? ' (selected)' : '' }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col col-6 p-1">
+                    <div class="text-bg-danger rounded p-2">
+                        <div class="row text-center">
+                            <h3 class="display-10">Wrong answers</h3>
+                        </div>
+                        {% for question in failed_questions %}
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5>{{ question.questionText }}</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        {% for option in question.options %}
+                                            {% set optionClass = option.selected ? 'fw-bold' : '' %}
+                                            <li class="list-group-item {{ optionClass }}">
+                                                {{ option.optionText }}{{ option.selected ? ' (selected)' : '' }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-body-tertiary p-5 rounded text-center">
+            <a href="{{ url('reset_contest') }}" class="btn btn-secondary btn-lg px-4 gap-3">Go to homepage</a>
+            <a href="{{ url('restart_contest') }}" class="btn btn-primary btn-lg px-4 gap-3">Restart contest</a>
+        </div>
+    </div>
+{% endblock %}
