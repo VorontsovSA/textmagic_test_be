@@ -23,7 +23,6 @@ services:
             - "9000:9000"
         volumes:
             - ./:/var/www/project
-#        command: sh -c "composer install && npm install && npm run build && while true; do sleep 30; done;"
         depends_on:
             - db
         env_file:
