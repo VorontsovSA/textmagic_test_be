@@ -23,8 +23,8 @@
 ### Установка и запуск проекта (DEV)
 
 ```shell
-git clone https://github.com/VorontsovSA/textmagic_test_be.git
-cd textmagic_test_be
+mkdir textmagic_test_be && cd textmagic_test_be
+git clone https://github.com/VorontsovSA/textmagic_test_be.git ./
 docker compose up -d --build 
 docker compose exec php sh boot.sh
 ```
