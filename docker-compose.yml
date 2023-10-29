@@ -26,6 +26,10 @@ services:
 #        command: sh -c "composer install && npm install && npm run build && while true; do sleep 30; done;"
         depends_on:
             - db
+        env_file:
+            - .env
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
         networks:
             - textmagic-network
     db:
@@ -41,6 +45,8 @@ services:
             POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
             POSTGRES_USER: ${POSTGRES_USER:-app}
         networks:
-            - textmagic-network
+            textmagic-network:
+                aliases:
+                    - db.local
 networks:
     textmagic-network:
